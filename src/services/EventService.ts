@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { Movie } from '../types';
 
 const apiClient = axios.create({
   baseURL: 'https://api.themoviedb.org/3/', // movie/now_playing?api_key=5bc6037ca25549cb1f9726c1ed94e79f
@@ -13,7 +14,7 @@ const apiClient = axios.create({
 });
 
 export default {
-  getNowPlaying() {
+  getNowPlaying(): Promise<AxiosResponse<Movie>> {
     return apiClient.get('/movie/438148');
   },
 };
